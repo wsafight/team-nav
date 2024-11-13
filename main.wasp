@@ -1,0 +1,53 @@
+app teamTab {
+  wasp: {
+    version: "^0.15.1"
+  },
+  title: "team-tab",
+  auth: {
+    userEntity: User,
+    methods: {
+      // 使用用户名helium
+      usernameAndPassword: {}
+    },
+    // 没权限跳转登陆页面
+    onAuthFailedRedirectTo: "/login"
+  }
+}
+
+//  所有页面
+route RootRoute { path: "/", to: MainPage }
+page MainPage {
+  authRequired: true,
+  component: import { MainPage } from "@src/pages/MainPage"
+}
+
+route SignupRoute { path: "/signup", to: SignupPage }
+page SignupPage {
+  component: import { SignupPage } from "@src/pages/SignupPage"
+}
+
+route LoginRoute { path: "/login", to: LoginPage }
+page LoginPage {
+  component: import { LoginPage } from "@src/pages/LoginPage"
+}
+
+route NotFindRoute { path: "*", to: NotFindPage }
+page NotFindPage {
+  component: import { NotFindPage } from "@src/pages/NotFindPage"
+}
+
+// task 操作
+query getTasks {
+  fn: import { getTasks } from "@src/apis/task",
+  entities: [Task]
+}
+
+action createTask {
+  fn: import { createTask } from "@src/apis/task",
+  entities: [Task]
+}
+
+action updateTask {
+  fn: import { updateTask } from "@src/apis/task",
+  entities: [Task]
+}
