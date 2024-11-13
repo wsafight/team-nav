@@ -31,6 +31,7 @@ page LoginPage {
   component: import { LoginPage } from "@src/pages/LoginPage"
 }
 
+// 404 问题
 route NotFindRoute { path: "*", to: NotFindPage }
 page NotFindPage {
   component: import { NotFindPage } from "@src/pages/NotFindPage"

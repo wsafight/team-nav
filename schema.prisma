@@ -17,6 +17,18 @@ model User {
   tasks Task[]
 }
 
+// model NavAttachment {
+//   id         Int      @id @default(autoincrement())
+//   name       String
+//   ext        String
+//   path       String
+//   size       Int
+//   createTime DateTime
+// }
+
+// model navCard {
+// }
+
 // Wasp requires the `prisma-client-js` generator to be present.
 generator client {
   provider = "prisma-client-js"

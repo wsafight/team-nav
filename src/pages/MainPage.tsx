@@ -2,6 +2,9 @@ import { Task } from 'wasp/entities'
 import { getTasks, useQuery, createTask, updateTask } from 'wasp/client/operations'
 import { ChangeEvent, FormEvent } from 'react'
 import { logout } from 'wasp/client/auth'
+import { Button } from '../components/ui/button'
+
+import '../Main.css'
 
 export const MainPage = () => {
   const { data: tasks, isLoading, error } = useQuery(getTasks)
@@ -9,12 +12,15 @@ export const MainPage = () => {
   return (
     <div>
       <NewTaskForm />
-      <button onClick={logout}>Logout</button>
-      
+      <Button size={'lg'} onClick={logout}>Logout</Button>
+      <Button size={'sm'} onClick={logout}>Logout</Button> 
       {tasks && <TasksList tasks={tasks} />}
 
       {isLoading && 'Loading...'}
       {error && 'Error: ' + error}
+      <span className="text-3xl font-bold underline">
+  Hello world!
+</span>
     </div>
   )
 }
